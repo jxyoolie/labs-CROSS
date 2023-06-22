@@ -1,0 +1,71 @@
+<form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Факультети</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Назва: </ion-label>
+        <ion-input
+          id="faculty-name"
+          type="text"
+          formControlName="facultyName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Декан: </ion-label>
+        <ion-input
+          id="faculty-dean"
+          type="text"
+          formControlName="facultyDean"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Номер телефону: </ion-label>
+        <ion-input
+          id="faculty-phoneNumber"
+          type="text"
+          formControlName="facultyPhoneNumber"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Адреса: </ion-label>
+        <ion-input
+          id="faculty-address"
+          type="text"
+          formControlName="facultyAddress"
+        ></ion-input>
+      </ion-item>
+      <ion-card formArrayName="kafedras">
+        <ion-card-header>
+          <ion-card-title>Кафедри</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button (click)="addKaf()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Додати кафедру
+          </ion-button>
+          <ion-item *ngFor="let kafs of getControls(); let i = index">
+            <ion-input
+              type="text"
+              formControlName="{{ i }}"
+              placeholder="Назва кафедри"
+            ></ion-input>
+            <ion-button (click)="deleteKaf(i)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Видалити
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <ion-button
+    type="submit"
+    expand="block"
+    fill="outline"
+    [disabled]="!teacherForm.valid"
+  >
+    Submit
+  </ion-button>
+</form>

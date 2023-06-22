@@ -1,0 +1,21 @@
+<app-my-form (kafAdd)="addKaf($event)"></app-my-form>
+<ion-card *ngFor="let kaf of kaf; let i = index">
+  <ion-card-header>
+    <ion-card-title>{{ department }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <h2>Кафедра</h2>
+    <ion-item *ngFor="let pibs of teacher.PIBofTeachers">
+      {{ pibs }}
+    </ion-item>
+  </ion-card-content>
+  <ion-button (click)="update()">Редагувати</ion-button>
+  <app-updateform
+    [kafedra]="kafedra"
+    [show]="show_update"
+    *ngIf="show_update"
+    (showChange)="showUp($event)"
+    (kafChange)="update_save($event, i)"
+  >
+  </app-updateform>
+</ion-card>

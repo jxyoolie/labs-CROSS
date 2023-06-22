@@ -1,0 +1,103 @@
+<!--
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Лабораторна робота №3</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Виконала студентка групи КН-32 Попова Юлія</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Лабораторні роботи</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      Завдання: <br>
+      1. Каталог книг:
+      • Назва.
+      • Автор.
+      • Кількість сторінок.
+      • Рік видання.
+      Запит. Ввести прізвище автора у окремій формі та позначити кольором всі
+      книги даного автора.
+    </ion-card-header>
+    <ion-button expand="block" (click)="load()">Завантажити</ion-button>
+    <ion-item>
+      <ion-list>
+        <ion-item button="" *ngFor="let item of dataBooks; index as i" detail="" (click)="toggleDetails(i)">
+          <ion-label *ngIf="!showDetails[i]" text-wrap>
+            <p [ngStyle]="{ color: newcolorRed(item.bookname)}">
+              <span>Назва книги:</span> {{ item.bookname }} </p>
+          </ion-label>
+          <ion-text *ngIf="showDetails[i]">
+            <ion-text>
+              <h5>  <span>Назва книги:</span> {{ item.bookname }} </h5>
+              <h5>  <span>Сторінки:</span> {{ item.pages}} </h5>
+              <h5>  <span>Рік видання:</span> {{ item.year }} </h5>
+              <h5 [ngStyle]="{ color: newcolorRed(item.author)}">  <span>Автор:</span> {{ item.author }} </h5>
+            </ion-text>
+          </ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
+
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Лабораторна робота №3</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Виконала студентка групи КН-32 Попова Юлія</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Лабораторні роботи</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      Завдання: <br>
+      1. Каталог книг:
+      • Назва.
+      • Автор.
+      • Кількість сторінок.
+      • Рік видання. <br>
+      Запит. Позначити кольором всі
+      книги автора за прізвищем.
+    </ion-card-header>
+    <ion-button expand="block" (click)="load()">Завантажити</ion-button>
+    <ion-item>
+      <ion-list>
+        <ion-item button="" *ngFor="let item of dataBooks; index as i" detail="" (click)="toggleDetails(i)">
+          <ion-label *ngIf="!showDetails[i]" text-wrap>
+            <p [ngStyle]="{ color: newcolorRed(item.author)}">
+              <span>Назва:</span> {{ item.bookname }} </p>
+          </ion-label>
+          <ion-text *ngIf="showDetails[i]">
+            <ion-text>
+              <h5>  <span>Назва:</span> {{ item.bookname }} </h5>
+              <h5>  <span>Рік видання:</span> {{ item.issueyear }} </h5>
+              <h5>  <span>Кількість сторінок:</span> {{ item.pages }} </h5>
+              <h5 [ngStyle]="{ color: newcolorRed(item.author) }">  <span>Автор:</span> {{ item.author }} </h5>
+            </ion-text>
+          </ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
