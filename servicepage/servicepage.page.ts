@@ -27,9 +27,9 @@ export class ServicepagePage implements OnInit {
   yySer: number[] = [];
   yyRec: number[] = [];
   yyTab: number[] = [];
-  
-  constructor( private tabService:TabService, private seriesService:SeriesService, private recursionService:RecursionService) 
-  { 
+
+  constructor( private tabService:TabService, private seriesService:SeriesService, private recursionService:RecursionService)
+  {
     Chart.register(...registerables);
   }
   input()
@@ -43,8 +43,8 @@ export class ServicepagePage implements OnInit {
     let s ='';
     let y:number =0;
     y=value;
-    let xyValue = this.xySeries.get(key); 
-    if (xyValue) { 
+    let xyValue = this.xySeries.get(key);
+    if (xyValue) {
       this.xx.push(xyValue.toFixed(4));
     }
     this.yyTab.push(this.xyTab.get(key).toFixed(4));
@@ -63,11 +63,11 @@ export class ServicepagePage implements OnInit {
     let xn1 = parseFloat(xn),
       xk1 = parseFloat(xk),
       h1 = parseFloat(h);
-    console.log("Tab");
+    console.log("Табулювання");
     this.xyTab = this.tabService.getTab(xn1,xk1,h1);
-    console.log("Sequence");
+    console.log("Ряд");
     this.xySeries = this.seriesService.getTab(xn1,xk1, h1);
-    console.log("Recursion");
+    console.log("Рекурсія");
     this.xyRecursion = this.recursionService.getTab(xn1,xk1,h1);
     this.input();
     this.lineChartMake();
@@ -77,37 +77,37 @@ export class ServicepagePage implements OnInit {
     if(this.lineChart instanceof Chart){
       this.lineChart.destroy();
     }
-    
+
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
         labels: this.xx,
         datasets: [
           {
-            label: 'Tab',
+            label: 'Табулювання',
             data: this.yyTab,
             fill: false,
-            borderColor: 'green',
+            borderColor: 'salmon',
             borderWidth: 1,
             borderDashOffset:0.0,
             pointRadius: 1,
             spanGaps: false,
           },
           {
-            label: 'Recursion',
+            label: 'Рекурсія',
             data: this.yyRec,
             fill: false,
-            borderColor: 'blue',
+            borderColor: 'lightgreen',
             borderWidth: 1,
             borderDashOffset:0.0,
             pointRadius: 1,
             spanGaps: false,
           },
           {
-            label: 'Sequence',
+            label: 'Ряд',
             data: this.yySer,
             fill: false,
-            borderColor: 'red',
+            borderColor: 'aqua',
             borderWidth: 1,
             borderDashOffset:0.0,
             pointRadius: 1,
